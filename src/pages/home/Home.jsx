@@ -7,11 +7,13 @@ import TopRated from "./topRated/TopRated";
 
 const Home = () => {
   return (
-    <div className="ypx-2">
+    <div >
       <Banner />
+      <div className="ypx-2">
       <TopRated/>
       <Trending />
       <Popular />
+      </div>
     </div>
   );
 };
