@@ -55,7 +55,7 @@ const Banner = () => {
                 setQuery(e.target.value);
               }}
             />
-            <Button className="yh-12 yrounded-r-full" variant="outline" onClick={searchQueryHandler}>Search</Button>
+            <Button className="yh-[2.9rem] yrounded-r-full" variant="outline" onClick={searchQueryHandler}>Search</Button>
           </div>
         </div>
       </div>
