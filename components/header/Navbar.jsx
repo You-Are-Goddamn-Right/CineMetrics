@@ -224,7 +224,7 @@ const Navbar = () => {
           <div className="yflex yjustify-center yitems-center yh-16 yw-full">
             <input
               className="yrounded-lg youtline-none ybg-gray-800 yw-4/5  yborder-none  "
-              type="text"
+              type="search"
               placeholder="Search for a film..."
               onKeyUp={searchQueryHandler}
               onChange={(e) => {

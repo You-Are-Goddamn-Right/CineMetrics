@@ -20,6 +20,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect
 } from "firebase/auth";
 import { auth, db, provider } from "@/src/config/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -122,7 +123,7 @@ const AuthForm = ({ LoginOrRegister, closeDialog }) => {
   const handleGoogleAuth = async () => {
     setAuthLoading(true);
     try {
-      const userCredentials = await signInWithPopup(auth, provider);
+      const userCredentials = await signInWithRedirect(auth, provider);
       const user = userCredentials.user;
       // console.log(user);
       const userDocRef = doc(db, "users", user.uid);

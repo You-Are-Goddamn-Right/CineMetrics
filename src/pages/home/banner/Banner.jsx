@@ -23,11 +23,16 @@ const Banner = () => {
       data?.results[Math.floor(Math.random() * data?.results?.length)]
         .backdrop_path;
     setBackground(bg);
-  }, [data,url]);
-  console.log(background)
+  }, [data, url]);
+  console.log(background);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
+      navigate(`/search/${query}`);
+    }
+  };
+  const searchButton = () => {
+    if (query.length > 0) {
       navigate(`/search/${query}`);
     }
   };
@@ -36,7 +41,10 @@ const Banner = () => {
     <div className="yw-full yh-[450px] yflex  yrelative md:yh-[750px]">
       {!loading && (
         <div className="yz-negative1 yh-full yw-full yabsolute ytop-0 yleft-0 yopacity-50  yoverflow-hidden">
-          <img className="yblock yw-full yh-full yobject-cover yobject-center" src={background} />
+          <img
+            className="yblock yw-full yh-full yobject-cover yobject-center"
+            src={background}
+          />
         </div>
       )}
 
@@ -47,15 +55,21 @@ const Banner = () => {
           <div className="ytext-[2.5rem] md:ytext-[5rem]">CineMetrics</div>
           <div className="yflex yitems-center yw-full md:yw-[calc(100%-400px)]">
             <input
-            className="ypl-10  yrounded-s-full yh-12 ybg-[#131d1b] youtline-none yborder-none yw-full "
-              type="text"
+              className="ypl-10  yrounded-s-full yh-12 ybg-[#131d1b] youtline-none yborder-none yw-full "
+              type="search"
               placeholder="Search for a film..."
               onKeyUp={searchQueryHandler}
               onChange={(e) => {
                 setQuery(e.target.value);
               }}
             />
-            <Button className="yh-[2.9rem] yrounded-r-full" variant="outline" onClick={searchQueryHandler}>Search</Button>
+            <Button
+              className="yh-[2.9rem] yrounded-r-full"
+              variant="outline"
+              onClick={searchButton}
+            >
+              Search
+            </Button>
           </div>
         </div>
       </div>
