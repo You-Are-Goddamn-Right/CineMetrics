@@ -117,8 +117,8 @@ const Info = ({ video, crew }) => {
   return (
     <div className="yrelative">
       <div className="ypt-20 ycontainer ymx-auto yflex yflex-col ygap-y-6 yp-6 ypb-3 lg:ygap-y-12 lg:yp-12 lg:ypb-6">
-        <div class="yz-20 yflex yflex-col ygap-12 md:yflex-row">
-          <div class="ymx-auto yh-[calc(clamp(150px,25vw,300px)/(2/3))] yw-[clamp(150px,25vw,300px)] ymin-w-[clamp(150px,25vw,300px)] md:ymx-0">
+        <div className="yz-20 yflex yflex-col ygap-12 md:yflex-row">
+          <div className="ymx-auto yh-[calc(clamp(150px,25vw,300px)/(2/3))] yw-[clamp(150px,25vw,300px)] ymin-w-[clamp(150px,25vw,300px)] md:ymx-0">
             <LazyLoadImage
               alt={data?.title || data?.name}
               src={
@@ -129,24 +129,24 @@ const Info = ({ video, crew }) => {
               title={data?.title || data?.name}
               width="300"
               height="450"
-              class="yrounded-md yobject-cover"
+              className="yrounded-md yobject-cover"
             />
           </div>
-          <div class="yflex yflex-col ygap-y-6 lg:ymax-w-3xl">
-            <div class="yflex yflex-col ygap-y-1">
-              <h1 class="ytext-xl yfont-bold md:ytext-3xl">
+          <div className="yflex yflex-col ygap-y-6 lg:ymax-w-3xl">
+            <div className="yflex yflex-col ygap-y-1">
+              <h1 className="ytext-xl yfont-bold md:ytext-3xl">
                 {data?.title || data?.name}
               </h1>
-              <div class="yflex yitems-center ygap-x-1">
-                <h2 class="yfont-semibold ytext-white/70">
+              <div className="yflex yitems-center ygap-x-1">
+                <h2 className="yfont-semibold ytext-white/70">
                   {data?.vote_average ? data?.vote_average : "?"}/10 ·{" "}
                   {dayjs(data?.release_date).format("YYYY")} ·{" "}
                   {data?.runtime ? toHoursAndMinutes(data?.runtime) : "?h?m"}
                 </h2>
               </div>
             </div>
-            <div class="yflex yflex-wrap yitems-center ygap-4">
-              <span class="yrounded-md yborder-2 ypx-2 yuppercase ytext-white/70">
+            <div className="yflex yflex-wrap yitems-center ygap-4">
+              <span className="yrounded-md yborder-2 ypx-2 yuppercase ytext-white/70">
                 {data?.status}
               </span>
               <Genres data={_genres} />
@@ -200,15 +200,15 @@ const Info = ({ video, crew }) => {
               )}
             </div>
 
-            <div class="yflex yflex-col ygap-y-2">
-              <h3 class="ytext-lg yfont-semibold ">Overview</h3>
-              <p class="ytext-white/70">{data?.overview}</p>
+            <div className="yflex yflex-col ygap-y-2">
+              <h3 className="ytext-lg yfont-semibold ">Overview</h3>
+              <p className="ytext-white/70">{data?.overview}</p>
             </div>
-            <div class="yflex ymax-w-lg yjustify-between">
+            <div className="yflex ymax-w-lg yjustify-between">
               {director?.length > 0 && (
-                <div class="yflex-1">
-                  <h3 class="yblock yfont-bold">Director(s)</h3>
-                  <span class="yblock ytext-white/70">
+                <div className="yflex-1">
+                  <h3 className="yblock yfont-bold">Director(s)</h3>
+                  <span className="yblock ytext-white/70">
                     {" "}
                     {director.map((d, i) => (
                       <span key={id}>

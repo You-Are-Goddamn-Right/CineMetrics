@@ -41,7 +41,7 @@ const Navbar = () => {
     setLoginOrRegister(value);
   };
   const { currentUser } = useAuth();
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleSignOut = () => {
     signOut(auth).catch((error) => {

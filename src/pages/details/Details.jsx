@@ -15,12 +15,12 @@ const Details = () => {
     loading,
     error: invalidId,
   } = useFetch(`/movie/${id}`);
-  console.log("invalidId:", invalidId);
+  // console.log("invalidId:", invalidId);
   const { data, loading: videoLoading } = useFetch(`/movie/${id}/videos`);
   const { data: credits, loading: creditsLoading } = useFetch(
     `/movie/${id}/credits`
   );
-  console.log(data);
+  // console.log(data);
 
 
 

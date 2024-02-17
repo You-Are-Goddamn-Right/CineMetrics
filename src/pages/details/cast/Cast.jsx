@@ -19,8 +19,8 @@ const Cast = ({ data, loading }) => {
     "https://dummyimage.com/1000x1500/a8a5a8/353538&text=no+img+available";
   return (
     <>
-      <div class="yz-20 yflex yflex-col ygap-y-6 yrelative ymb-4">
-        <div class="ycontainer ytext-lg yfont-bold">Cast:</div>
+      <div className="yz-20 yflex yflex-col ygap-y-6 yrelative ymb-4">
+        <div className="ycontainer ytext-lg yfont-bold">Cast:</div>
         <Carousel className="ycontainer">
           <CarouselPrevious className="yz-50 yfixed ytop-0 yleft-0" />
           <CarouselNext className="yz-50 yfixed ytop-0 yright-0" />
@@ -33,10 +33,10 @@ const Cast = ({ data, loading }) => {
                   <div>
                     <div>
                       <ul>
-                        <li class="yflex yw-[25vw] ysnap-start yflex-col ygap-y-2 focus:youtline-none sm:yw-[150px]">
+                        <li className="yflex yw-[25vw] ysnap-start yflex-col ygap-y-2 focus:youtline-none sm:yw-[150px]">
                           <Skeleton className="yh-60"/>
-                        <div class="yflex yflex-col ytext-center">
-                                <Skeleton class="ytruncate ytext-xs yfont-bold md:ytext-sm"/>
+                        <div className="yflex yflex-col ytext-center">
+                                <Skeleton className="ytruncate ytext-xs yfont-bold md:ytext-sm"/>
                                 <Skeleton className="ytruncate ytext-xs"/>
                               </div>
                         </li>
@@ -57,19 +57,19 @@ const Cast = ({ data, loading }) => {
                       <div>
                         <div>
                           <ul>
-                            <li class="yflex yw-[25vw] ysnap-start yflex-col ygap-y-2 focus:youtline-none sm:yw-[150px]">
+                            <li className="yflex yw-[25vw] ysnap-start yflex-col ygap-y-2 focus:youtline-none sm:yw-[150px]">
                               
                               <LazyLoadImage effect="blur" src={imgUrl}/>
-                              <div class="yflex yflex-col ytext-center">
+                              <div className="yflex yflex-col ytext-center">
                                 <span
                                   title={item.name}
-                                  class="ytruncate ytext-xs yfont-bold md:ytext-sm"
+                                  className="ytruncate ytext-xs yfont-bold md:ytext-sm"
                                 >
                                   {item.name}
                                 </span>
                                 <span
                                   title={item.character}
-                                  class="ytruncate ytext-xs ytext-white/70"
+                                  className="ytruncate ytext-xs ytext-white/70"
                                 >
                                   {item.character}
                                 </span>
