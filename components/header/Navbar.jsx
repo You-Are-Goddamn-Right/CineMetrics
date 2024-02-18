@@ -14,6 +14,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -29,13 +41,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/src/config/firebase";
 
 const Navbar = () => {
+  const [openSignOut, setOpenSignOut] = useState(false);
+
   const [showDialog, setShowDialog] = useState(false);
   const [LoginOrRegister, setLoginOrRegister] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
   const [animationClass, setAnimationClass] = useState("");
   const navigate = useNavigate();
-  const {toast} = useToast();
+  const { toast } = useToast();
 
   const handleLoginOrRegister = (value) => {
     setLoginOrRegister(value);
@@ -44,18 +58,20 @@ const Navbar = () => {
   // console.log(currentUser);
 
   const handleSignOut = () => {
+    setOpenSignOut(true);
+  };
+
+  const confirmSignOut = () => {
     signOut(auth).catch((error) => {
       console.log(error);
     });
     toast({
       description: "You logged out successfully.",
-      action: (
-        <ToastAction altText="Close">
-          close
-        </ToastAction>
-      ),
+      action: <ToastAction altText="Close">close</ToastAction>,
       duration: 5000,
     });
+    setOpenSignOut(false);
+    navigate(`/`);
   };
 
   const openSearch = () => {
@@ -79,12 +95,11 @@ const Navbar = () => {
   return (
     <div>
       <div className="md:yhidden yspace-x-4 yflex yitems-center">
-        
         {currentUser && (
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <Avatar >
+                <Avatar>
                   <AvatarImage src={currentUser.photoURL} />
                   <AvatarFallback>
                     <AvatarIcon className="yw-full yh-full" />
@@ -97,10 +112,7 @@ const Navbar = () => {
             </Tooltip>
           </TooltipProvider>
         )}
-        <LuSearch
-          onClick={openSearch}
-          className="ycursor-pointer ytext-2xl"
-        />
+        <LuSearch onClick={openSearch} className="ycursor-pointer ytext-2xl" />
         <Sheet className="yw-full">
           <SheetTrigger>
             <LuAlignJustify className="ytext-2xl" />
@@ -116,11 +128,27 @@ const Navbar = () => {
                     <SheetClose asChild>
                       <Link to="/watchlist">Watchlist</Link>
                     </SheetClose>
-                    <SheetClose asChild>
-                      <div className="ycursor-pointer" onClick={handleSignOut}>
-                        Logout
-                      </div>
-                    </SheetClose>
+                    
+                    <AlertDialog open={openSignOut} onOpenChange={setOpenSignOut}>
+              <AlertDialogTrigger>
+              <SheetClose asChild>
+                <div className="!ytext-lg ycursor-pointer" >
+                  Logout
+                </div>
+                </SheetClose>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogTitle>Confirm Logout</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to logout?
+                </AlertDialogDescription>
+                <AlertDialogAction as={Button} onClick={confirmSignOut}>
+                  Yes, Logout
+                </AlertDialogAction>
+                <AlertDialogCancel as={Button}>Cancel</AlertDialogCancel>
+              </AlertDialogContent>
+            </AlertDialog>
+                    
                   </>
                 ) : (
                   <>
@@ -169,13 +197,25 @@ const Navbar = () => {
                 Watchlist
               </Button>
             </Link>
-            <Button
-              onClick={handleSignOut}
-              className="!ytext-lg"
-              variant="ghost"
-            >
-              Logout
-            </Button>
+
+            <AlertDialog open={openSignOut} onOpenChange={setOpenSignOut}>
+              <AlertDialogTrigger>
+                <Button className="!ytext-lg ypt-1" variant="ghost">
+                  Logout
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogTitle>Confirm Logout</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to logout?
+                </AlertDialogDescription>
+                <AlertDialogAction as={Button} onClick={confirmSignOut}>
+                  Yes, Logout
+                </AlertDialogAction>
+                <AlertDialogCancel as={Button}>Cancel</AlertDialogCancel>
+              </AlertDialogContent>
+            </AlertDialog>
+
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>

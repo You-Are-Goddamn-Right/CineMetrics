@@ -55,6 +55,9 @@ function App() {
     <BrowserRouter>
     <div className="yflex yflex-col yh-screen yjustify-between ">
       <Header />
+      <div className="yflex-grow">
+
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<PageNotFound />} />
@@ -68,7 +71,9 @@ function App() {
        }>
        </Route>
       </Routes>
+      </div>
       <Footer />
+      
       <Toaster />
       </div>
     </BrowserRouter>
