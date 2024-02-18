@@ -10,7 +10,6 @@ import dayjs from "dayjs";
 import { fetchDataFromApi } from "@/src/utils/api";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Loader from "@/components/loader/Loader";
 
 const Watchlist = () => {
   const { url } = useSelector((state) => state.home);
@@ -32,7 +31,7 @@ const Watchlist = () => {
     currentUser &&
       useEffect(() => {
         watchlistArray();
-      }, [db, currentUser.uid]);
+      }, [db, currentUser]);
   }
 
   const fetchMovies = async () => {

@@ -1,11 +1,10 @@
 import React from "react";
 import { GiFilmProjector } from "react-icons/gi";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import logo from "@/src/assets/CineMtrx_rmbg.png";
 
 const Logo = () => {
-  const navigate = useNavigate();
 
   return (
     <Link to="/">
